@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="clock"></div>
+</body>
+<script>
+    let source = new EventSource('/eventSource')
+    source.onerror = function(event) {
+        console.log(event)
+    }
+    source.onmessage = function(event) {
+        let data = event.data
+        console.log(data)
+        console.log(event)
+    }
+    source.addEventListener('foo', function (event) {
+        let data = event.data;
+        let lastEventId = event.lastEventId;
+        console.log(data)
+}, false);
+</script>
+</html>
