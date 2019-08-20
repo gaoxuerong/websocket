@@ -7,6 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    
+  <script>
+    let websocket = new WebSocket('ws://localhost:8888')
+    websocket.onopen = function() {
+      console.log(`1.客户端连接成功`)
+      websocket.send(`3.hello`)
+    }
+    websocket.onmessage = function(event) {
+      console.log(`6.收到了服务器的响应，服务端返回的数据为：${event.data}`)
+    }
+  </script>
 </body>
 </html>
