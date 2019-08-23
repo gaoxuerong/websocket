@@ -46,10 +46,12 @@ let server = net.createServer((function(socket){
   })
 }))
 function unmask(buffer, mask) {
+  console.log(buffer) //<Buffer c0 5c 05 40 c7>
   const length = buffer.length;
   for (let i = 0; i < length; i++) {
       buffer[i] ^= mask[i%4];
   }
+  console.log(buffer)//<Buffer 68 65 6c 6c 6f>
 }
 server.listen(9999);
 
